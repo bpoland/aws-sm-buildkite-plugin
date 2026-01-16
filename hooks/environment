@@ -16,7 +16,7 @@ load_secret_into_env() {
   local secret_value
   echo "Reading ${secret_id} from AWS SM into environment variable ${export_name}"
   secret_value="$(get_secret_value "${secret_id}")"
-  # Register full secret - if json_key is provided, we know it's JSON
+  # parse JSON key if we have one
   if [[ -n "${json_key}" ]]; then
     register_secret_with_redactor "${secret_value}" "true"
     echo "Extracting JSON value at '${json_key}' from secret"

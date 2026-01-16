@@ -74,9 +74,9 @@ function register_secret_with_redactor() {
   fi
 
   if [[ "${is_json}" == "true" ]]; then
-    echo "${secret_value}" | buildkite-agent redactor add --format json 2>/dev/null || true
+    echo "${secret_value}" | buildkite-agent redactor add --format json
   else
-    echo "${secret_value}" | buildkite-agent redactor add 2>/dev/null || true
+    echo "${secret_value}" | buildkite-agent redactor add
   fi
 }
 
@@ -87,5 +87,5 @@ function register_file_with_redactor() {
     return 0
   fi
 
-  buildkite-agent redactor add "${file_path}" 2>/dev/null || true
+  buildkite-agent redactor add "${file_path}"
 }
